@@ -1,6 +1,8 @@
 <?php
+	//take in input
     $inData = getRequestInfo();
 	
+	//initialize variables for input
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];
     $phoneNumber = $inData["phoneNumber"];
@@ -14,6 +16,7 @@
 	} 
 	else
 	{
+		//update contact depending on the contactId
 		$stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? WHERE ID=?");
 		$stmt->bind_param("ssssi", $firstName, $lastName, $phoneNumber, $email, $contactId);
 		$stmt->execute();
