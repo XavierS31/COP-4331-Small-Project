@@ -1,140 +1,291 @@
-body 
-{
-    background-color: #707070;
-}
+:root{
+    --cream: #f2f0eb;
+    --text: #1e3932;
+    --muted: rgba(30,57,50,.70);
+    --primary: #006241;
+    --border: #cfd5d3;
+    --shadow: 0 18px 40px rgba(0,0,0,.18);
+  }
+  
+  *{ box-sizing: border-box; }
+  
+  html, body{
+    height: 100%;
+  }
+  
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: #d4d4d4;
+  }
+  
+  .app{
+    height: 100vh;
+    display: flex;
+  }
+  
+  /* LEFT HERO (rickWorking.jpg) */
+  .hero{
+    flex: 3;
+    position: relative;
+    background:
+      radial-gradient(1200px 900px at 80% 10%, rgba(255,255,255,.15), rgba(255,255,255,0) 60%),
+      url("../images/rickWorking.jpg") center / cover no-repeat;
+  }
+  
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    background: rgba(0,0,0,.02);
+  }
+  
+  .hero-text{
+    position:absolute;
+    left: 64px;
+    bottom: 56px;
+    color: #fff;
+    max-width: 520px;
+    text-shadow: 0 10px 28px rgba(0,0,0,.22);
+  }
+  
+  .hero-text h2{
+    font-family: "Lora", Georgia, serif;
+    font-size: 58px;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    font-weight: 700;
+  }
+  
+  .hero-text p{
+    margin:0;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+    opacity: .95;
+  }
+  
+  /* RIGHT PANEL */
+  .panel{
+    flex: 2;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+  
+  .logo-top{
+    display: flex;
+    justify-content: center;
+    padding: 24px 40px 0;
+  }
 
-#title 
-{
-    font-size: 40px;
+  .logo-top img{
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content: flex-end;
+    padding: 18px 40px 18px;
+  }
+
+  .logo-wrap{
+    width: 80px;
+    height: 80px;
+    background: rgba(0,0,0,.05);
+    border-radius: 10px;
+  }
+  
+  /* If you use a real logo img */
+  .logo-wrap img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+    display:block;
+  }
+  
+  .nav a{
+    text-decoration:none;
+    color: var(--text);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .18em;
+    margin-left: 26px;
+    text-transform: uppercase;
+  }
+  
+  .nav a:hover{
+    text-decoration: underline;
+  }
+  
+  .content{
+    display:flex;
+    justify-content:center;
+    padding: 18px 40px 60px;
+  }
+  
+  .card{
     width: 100%;
-    margin: 2% 5%;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-    color: #FFFFFF;
-}
-
-#loginDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
-}
-
-#loggedInDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
-}
-
-#accessUIDiv
-{
-    font-size: 30px;
-    width: 70%;
-    margin-left: 15%;
-    padding: 25px;
-    background-color: #b2b2b2;
-}
-
-.buttons
-{
-    font-size: 30px;
-    border-radius: 25px;
-    width: 50%;
-    margin-left: 25%;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.buttons:hover{
-    background-color: #00d5124f;
-    color: #FFFFFF;
-    opacity: 50%;
-}
-
-#loginName
-{
-	font-size: 30px;
-}
-#loginPassword
-{
-	font-size: 30px;
-}
-#searchText
-{
-	font-size: 30px;
-}
-#colorText
-{
-	font-size: 30px;
-}
-
-input[type="text"],input[type="password"]{
-    border-radius: 25px;
-    text-align: center;
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#inner-title{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-}
-
-#loginResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-}
-
-#userName{
-    display: inline-block;
-    width: 80%;
-    margin-left: 10%;
-    text-align: center;
-}
-
-#logoutButton{
-    width: 20%;
-    margin-left: 40%;
-}
-
-select{
-    width: 30%;
-    margin-left: 35%;
-    margin-top: 2%;
-    font-size: 0.75em;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#colorSearchResult{
-    display: none;
-}
-
-#colorAddResult{
-    display: inline-block;
-    font-size: 0.8em;
-    width: 90%;
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-    font-family: 'Ubuntu', sans-serif;
-    color: #95060a;
-}
+    max-width: 520px;
+  }
+  
+  /* Titles */
+  .card h1{
+    font-family: "Lora", Georgia, serif;
+    font-size: 48px;
+    margin: 10px 0 10px;
+    font-weight: 700;
+  }
+  
+  .subtitle{
+    margin: 0 0 26px;
+    color: var(--muted);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  /* Form */
+  .form label{
+    display:block;
+    font-weight: 800;
+    font-size: 13px;
+    margin: 18px 0 10px;
+  }
+  
+  .form input{
+    width: 100%;
+    height: 54px;
+    padding: 0 18px;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .form input:focus{
+    border-color: rgba(0,98,65,.55);
+    box-shadow: 0 0 0 4px rgba(0,98,65,.12);
+  }
+  
+  /* Password row with "visibility" hint like your mock */
+  .password-wrap{
+    position: relative;
+  }
+  
+  .visibility{
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(30,57,50,.40);
+    font-weight: 700;
+    user-select:none;
+  }
+  
+  /* Remember / forgot row */
+  .row{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    margin: 16px 0 22px;
+  }
+  
+  .remember{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 13px;
+  }
+  
+  .remember input{
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+  }
+  
+  .forgot{
+    color: var(--primary);
+    text-decoration:none;
+    font-weight: 800;
+    font-size: 13px;
+  }
+  
+  .forgot:hover{ text-decoration: underline; }
+  
+  /* Buttons */
+  .btn{
+    width:100%;
+    border-radius: 999px;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-primary{
+    height: 58px;
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 18px 30px rgba(0,98,65,.20);
+  }
+  
+  .btn-primary:hover{
+    filter: brightness(0.98);
+    transform: translateY(-1px);
+  }
+  
+  .btn-outline{
+    height: 54px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+  }
+  
+  .btn-outline:hover{
+    background: rgba(0,98,65,.06);
+  }
+  
+  /* OR divider */
+  .divider{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin: 20px 0 16px;
+  }
+  
+  .divider span{
+    flex:1;
+    height: 1px;
+    background: rgba(30,57,50,.25);
+  }
+  
+  .divider em{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: .22em;
+    color: rgba(30,57,50,.45);
+  }
+  
+  /* Login result */
+  .result{
+    display:block;
+    min-height: 20px;
+    margin-top: 10px;
+    font-weight: 800;
+    color: #a11818;
+  }
+  
+  /* Responsive: hide left hero on small screens (like most sign-in pages) */
+  @media (max-width: 980px){
+    .hero{ display:none; }
+    .panel{ flex: 1; }
+    .topbar, .content{ padding-left: 22px; padding-right: 22px; }
+  }
+  

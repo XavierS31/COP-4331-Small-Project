@@ -1,22 +1,79 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>COP 4331 LAMP Stack Demo</title>
-	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/code.js"></script>
-    <link href="css/styles.css" rel="stylesheet">	
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>UCF Paradise</title>
+
+  <!-- required for your existing login -->
+  <script src="js/md5.js"></script>
+  <script src="js/code.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
 </head>
+
 <body>
+  <div class="app">
+    <!-- LEFT HERO -->
+    <section class="hero" aria-label="Promo panel">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h2>Its Another day in UCF paradise Coffee Shop!<br/>care.</h2>
+        <p></p>
+      </div>
+    </section>
 
-<h1 id="title">COP 4331 LAMP Stack Demo</h1>
+    <!-- RIGHT PANEL -->
+    <section class="panel">
+      <div class="logo-top">
+        <img src="images/logo.jpg" alt="UCF Paradise Coffee" aria-label="UCF Paradise logo">
+      </div>
+      
+      <main class="content">
+        <!-- Keep original IDs for compatibility -->
+        <div id="loginDiv" class="card">
+          <h1>Sign in</h1>
+          <p class="subtitle">Access your UCF Paradise Coffee account.</p>
 
-<div id="loginDiv">
-	<span id="inner-title">PLEASE LOG IN</span>
-	<input type="text" id="loginName" placeholder="Username" /><br />
-	<input type="password" id="loginPassword" placeholder="Password"/><br />
-	<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Do It </button>
-	<span id="loginResult"></span>
-</div>
+          <form class="form" onsubmit="return false;">
+            <label for="loginName">Username</label>
+            <input id="loginName" type="text" placeholder="your@email.com" autocomplete="username" />
 
+            <label for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password" />
+              <span class="visibility">visibility</span>
+            </div>
+
+            <div class="row">
+              <label class="remember">
+              
+              </label>
+              
+            </div>
+
+            <!-- IMPORTANT: your JS expects doLogin() -->
+            <button type="button" id="loginButton" class="btn btn-primary" onclick="doLogin();">
+              Sign In
+            </button>
+
+            <span id="loginResult" class="result"></span>
+
+            <div class="divider">
+              <span></span><em>OR</em><span></span>
+            </div>
+
+            <button type="button" class="btn btn-outline">
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </main>
+    </section>
+  </div>
 </body>
 </html>
+
+
