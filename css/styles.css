@@ -288,4 +288,44 @@
     .panel{ flex: 1; }
     .topbar, .content{ padding-left: 22px; padding-right: 22px; }
   }
-  
+ 
+ /* Modal Background (Dimmed) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0,0,0,0.5); /* Dimmed background */
+  backdrop-filter: blur(4px); /* Modern blur effect */
+}
+
+/* Modal Box (White Container) */
+.modal-content {
+  background-color: var(--cream);
+  margin: 5% auto; /* Centers it vertically/horizontally */
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px; /* Looks good on desktop, scales on mobile */
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+/* The Close (X) Button */
+.close-button {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-button:hover {
+  color: var(--primary);
+}

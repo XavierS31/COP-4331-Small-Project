@@ -1,4 +1,5 @@
-const urlBase = 'http://134.199.201.212/LAMPAPI';
+//const urlBase = 'http://134.199.201.212/LAMPAPI';
+const urlBase = 'http://cop4331-11-domain.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -182,4 +183,56 @@ function searchColor()
 		document.getElementById("colorSearchResult").innerHTML = err.message;
 	}
 	
+}
+
+// Function to open the modal
+function openSignUpModal() {
+    document.getElementById("signUpModal").style.display = "block";
+}
+
+// Function to close the modal
+function closeSignUpModal() {
+    document.getElementById("signUpModal").style.display = "none";
+}
+
+function doSignUp() {
+    let firstName = document.getElementById("regFirstName").value;
+    let lastName = document.getElementById("regLastName").value;
+    let login = document.getElementById("regLogin").value;
+    let password = document.getElementById("regPassword").value;
+
+    document.getElementById("signUpResult").innerHTML = "";
+
+    // Package the data for your SignUp.php API
+    let tmp = {
+        firstName: firstName,
+        lastName: lastName,
+        login: login,
+        password: password
+    };
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/SignUp.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                
+                if (jsonObject.error && jsonObject.error.length > 0) {
+                    document.getElementById("signUpResult").innerHTML = jsonObject.error;
+                    return;
+                }
+
+                document.getElementById("signUpResult").innerHTML = "Successfully Registered!";
+                setTimeout(closeSignUpModal, 2000); // Close after 2 seconds
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("signUpResult").innerHTML = err.message;
+    }
 }
