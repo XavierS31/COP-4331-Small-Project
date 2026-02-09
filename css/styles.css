@@ -65,6 +65,24 @@
     opacity: .95;
   }
   
+  /* White message box on top of hero */
+  .hero .hero-message{
+    position: absolute;
+    top: 24px;
+    left: 64px;
+    z-index: 2;
+    margin: 0;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-style: italic;
+    color: #000;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    max-width: 420px;
+  }
+  
   /* RIGHT PANEL */
   .panel{
     flex: 2;
