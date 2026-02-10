@@ -355,3 +355,231 @@
 .close-button:hover {
   color: var(--primary);
 }
+
+/* ========== CONTACTS PAGE (Manage Contacts Desktop) – layout and overrides ========== */
+.contacts-page {
+  flex: 1;
+}
+.contacts-page.panel {
+  background: #e5e7eb;
+}
+.contacts-header {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  padding: 16px 40px;
+  min-height: 72px;
+}
+.contacts-header-left {
+  margin: 0;
+  gap: 24px;
+  align-items: center;
+}
+.contacts-header-left .logo-wrap {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.contacts-brand {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text);
+}
+.contacts-search-form {
+  margin: 0;
+  width: 320px;
+}
+.contacts-search-form input {
+  height: 40px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: none;
+  padding-left: 40px;
+}
+.contacts-search-form input:focus {
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+.contacts-header-right {
+  margin: 0;
+  gap: 12px;
+  align-items: center;
+}
+.contacts-icon-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  min-width: 40px;
+}
+.contacts-user-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+.contacts-header-right .btn-outline {
+  height: 40px;
+  width: auto;
+  padding: 0 16px;
+}
+.contacts-main {
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 40px 48px;
+}
+.contacts-breadcrumb {
+  margin: 0 0 24px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+.contacts-breadcrumb a {
+  color: var(--muted);
+}
+.contacts-breadcrumb a:hover {
+  color: var(--primary);
+}
+.contacts-breadcrumb-current {
+  color: var(--text);
+  font-weight: 600;
+}
+.contacts-chevron {
+  font-size: 16px;
+  vertical-align: middle;
+  color: var(--muted);
+}
+.contacts-title-row {
+  margin: 0 0 24px;
+}
+.contacts-page-title.card {
+  font-size: 24px;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+.contacts-page-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.contacts-add-btn {
+  width: auto;
+  height: 48px;
+  padding: 0 24px;
+}
+.contacts-card {
+  max-width: none;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.contacts-toolbar {
+  margin: 0;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+.contacts-toolbar-left {
+  margin: 0;
+  gap: 12px;
+}
+.contacts-tab-label {
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .05em;
+  color: var(--text);
+  text-decoration: underline;
+}
+.contacts-tab-badge {
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.contacts-toolbar-right {
+  margin: 0;
+  gap: 8px;
+}
+.contacts-toolbar-btn {
+  width: auto;
+  height: 40px;
+  padding: 0 12px;
+}
+.contacts-table-wrap {
+  padding: 0;
+}
+.contacts-search-row {
+  margin: 0;
+  padding: 12px 24px;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.contacts-table th {
+  padding: 16px 24px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.contacts-table td {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.contacts-table tbody tr:hover {
+  background: #fafafa;
+}
+.contacts-pagination {
+  margin: 0;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+.contacts-pagination-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.contacts-pagination-controls {
+  margin: 0;
+  gap: 4px;
+}
+.contacts-page-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  min-width: 36px;
+}
+.contacts-page-num {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  min-width: 36px;
+}
+.contacts-page-num-active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.contacts-page-dots {
+  padding: 0 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.contacts-footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 14px;
+  color: var(--muted);
+}

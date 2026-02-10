@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Manage Contacts Desktop</title>
+	<link href="css/styles.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+	<script type="text/javascript" src="js/code.js"></script>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() 
+		{
+			readCookie();
+		}, false);
+		</script>
+</head>
+<body>
+	<div class="panel contacts-page">
+		<div class="topbar contacts-header">
+			<div class="row contacts-header-left">
+				<div class="logo-wrap"><img src="images/logoPng.png" alt="Partners" /></div>
+				<span class="contacts-brand">Partners</span>
+				<div class="form contacts-search-form">
+					<input type="text" id="searchText" placeholder="Search contacts..." />
+				</div>
+			</div>
+			<div id="loggedInDiv" class="row contacts-header-right">
+				<button type="button" class="btn btn-outline contacts-icon-btn" aria-label="Notifications"><span class="material-symbols-outlined">notifications</span></button>
+				<span id="userName" class="contacts-user-name"></span>
+				<button type="button" id="logoutButton" class="btn btn-outline" onclick="doLogout();">Log Out</button>
+			</div>
+		</div>
+		<div class="content contacts-main">
+			<nav class="nav contacts-breadcrumb">
+				<a href="index.html">Home</a>
+				<span class="material-symbols-outlined contacts-chevron">chevron_right</span>
+				<span class="contacts-breadcrumb-current">Contacts</span>
+			</nav>
+			<div class="row contacts-title-row">
+				<div>
+					<h1 id="title" class="card contacts-page-title">Manage Contacts</h1>
+					<p class="subtitle contacts-page-subtitle">Oversee and organize all partner and customer relationships.</p>
+				</div>
+				<button type="button" id="addColorButton" class="btn btn-primary contacts-add-btn" onclick="addColor();">+ Add New Contact</button>
+			</div>
+			<div class="card contacts-card">
+				<div class="row contacts-toolbar">
+					<div class="row contacts-toolbar-left">
+						<span class="contacts-tab-label">ALL PARTNERS</span>
+						<span id="contactsCount" class="contacts-tab-badge">128 Total</span>
+					</div>
+					<div class="row contacts-toolbar-right">
+						<button type="button" class="btn btn-outline contacts-toolbar-btn">Filter</button>
+						<button type="button" class="btn btn-outline contacts-toolbar-btn">Export</button>
+					</div>
+				</div>
+				<div id="accessUIDiv" class="contacts-table-wrap">
+					<div class="row contacts-search-row">
+						<div class="form" style="flex:1; margin:0;">
+							<input type="text" id="colorText" placeholder="Contact to add" />
+						</div>
+						<button type="button" id="searchColorButton" class="btn btn-outline" onclick="searchColor();">Search Contact</button>
+					</div>
+					<span id="colorSearchResult" class="result"></span>
+					<table class="contacts-table">
+						<thead>
+							<tr>
+								<th>CONTACT NAME</th>
+								<th>EMAIL ADDRESS</th>
+								<th>PHONE NUMBER</th>
+								<th>STATUS</th>
+								<th>ACTIONS</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td colspan="5"><p id="colorList"></p></td></tr>
+						</tbody>
+					</table>
+					<span id="colorAddResult" class="result"></span>
+				</div>
+				<div class="row contacts-pagination">
+					<span id="contactsPaginationText" class="contacts-pagination-label">Showing 1 to 4 of 128 entries</span>
+					<div class="row contacts-pagination-controls">
+						<button type="button" class="btn btn-outline contacts-page-btn" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
+						<button type="button" class="btn btn-primary contacts-page-num contacts-page-num-active">1</button>
+						<button type="button" class="btn btn-outline contacts-page-num">2</button>
+						<button type="button" class="btn btn-outline contacts-page-num">3</button>
+						<span class="contacts-page-dots">...</span>
+						<button type="button" class="btn btn-outline contacts-page-num">32</button>
+						<button type="button" class="btn btn-outline contacts-page-btn" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
+					</div>
+				</div>
+			</div>
+			<p class="subtitle contacts-footer">© 2024 Partner Portal Desktop. All rights reserved.</p>
+		</div>
+	</div>
+</body>
+</html>

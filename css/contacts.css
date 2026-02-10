@@ -1,0 +1,256 @@
+/* Contacts page – styles moved from inline in contacts1.html */
+
+.contacts-page.panel {
+  flex: 1;
+}
+
+.contacts-page > .topbar {
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  min-height: 140px;
+  padding: 24px 40px;
+}
+
+.contacts-page > .topbar > .row {
+  margin: 0;
+}
+
+.contacts-page > .topbar > .row.topbar-left {
+  gap: 32px;
+  align-items: center;
+}
+
+.contacts-page > .topbar .topbar-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 32px;
+  border-right: 1px solid var(--border);
+}
+
+.contacts-page > .topbar .topbar-title-wrap {
+  padding-left: 0;
+}
+
+.contacts-page > .topbar > .row:last-child {
+  gap: 8px;
+}
+
+.contacts-page > .topbar .topbar-logo-wrap .logo-wrap {
+  width: 2000px;
+  height: 2000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+}
+
+.contacts-page > .topbar .topbar-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.contacts-page > .topbar > .row:first-child > .form {
+  margin: 0;
+  width: 280px;
+}
+
+.contacts-page > .topbar > .row:first-child > .form input {
+  height: 40px;
+}
+
+.contacts-page > .topbar > .row:last-child .btn {
+  width: auto;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.contacts-page > .topbar > .row:last-child .btn:last-of-type {
+  padding: 0 8px;
+}
+
+.contacts-page > .topbar > .row:last-child .logo-wrap {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #fff;
+}
+
+.contacts-page > .topbar > .row:last-child .logo-wrap .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.contacts-page > .topbar > .row:last-child > .row + span {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.contacts-page > .content {
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contacts-page > .content > .nav {
+  margin: 0 0 24px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+.contacts-page > .content > .nav .material-symbols-outlined {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.contacts-page > .content > .nav span:last-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.contacts-page > .content > .row {
+  margin: 0 0 24px;
+}
+
+.contacts-page > .content > .row h1 {
+  font-size: 24px;
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.contacts-page > .content > .row .subtitle {
+  margin: 0;
+  font-size: 14px;
+}
+
+.contacts-page > .content > .row .btn-primary {
+  width: auto;
+  height: 48px;
+  padding: 0 24px;
+}
+
+.contacts-page > .content > .row .btn-primary .material-symbols-outlined {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.contacts-page > .content > .card {
+  max-width: none;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.contacts-page > .content > .card > .row {
+  margin: 0;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+
+.contacts-page > .content > .card > .row:last-child {
+  border-bottom: none;
+  border-top: 1px solid var(--border);
+}
+
+.contacts-page > .content > .card > .row > .row {
+  margin: 0;
+}
+
+.contacts-page > .content > .card > .row:first-child > .row:first-child {
+  gap: 12px;
+}
+
+.contacts-page > .content > .card > .row:first-child > .row:first-child span:first-child {
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+#contactsCount {
+  background: rgba(0, 98, 65, 0.12);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.contacts-page > .content > .card > .row:first-child > .row:last-child {
+  gap: 8px;
+}
+
+.contacts-page > .content > .card > .row:first-child .btn-outline {
+  width: auto;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.contacts-page > .content > .card > .row:first-child .btn-outline .material-symbols-outlined {
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.contacts-page > .content > .card > div:nth-child(2) {
+  overflow-x: auto;
+}
+
+.contacts-page > .content > .card table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.contacts-page > .content > .card thead tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.contacts-page > .content > .card th {
+  padding: 16px 24px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.contacts-page > .content > .card th:last-child {
+  text-align: right;
+}
+
+#contactsPaginationText {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.contacts-page > .content > .card > .row:last-child > .row {
+  gap: 4px;
+}
+
+#contactsPrevBtn,
+#contactsNextBtn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+}
+
+.contacts-page > .content > .subtitle {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 14px;
+}
