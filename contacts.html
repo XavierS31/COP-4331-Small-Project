@@ -16,10 +16,11 @@
 				var name = firstName + (lastName ? ' ' + lastName : '');
 				el.textContent = 'Welcome back, ' + name + '!';
 			}
+
 			var heroBg = document.getElementById('contactsHeroBg');
 			var section = document.getElementById('contactsSection');
 			var defaultImg = "url('./images/rickTakingOrder.jpg')";
-			var hoverImg = "url('./images/ricktalking.jpg')";
+			var hoverImg = "url('./images/rickTalking.jpg')";
 			if (heroBg && section) {
 				section.addEventListener('mouseenter', function() {
 					heroBg.style.backgroundImage = hoverImg;
@@ -56,7 +57,9 @@
 				<div class="contacts-hero-bg" id="contactsHeroBg" style="background-image: url('./images/rickTakingOrder.jpg');"></div>
 				<div class="contacts-hero-caption">
 					<h3 class="contacts-hero-name">Dr. Richard Leinecker</h3>
-						<p class="contacts-hero-name-subtitle">"if he didnt lock in"</p>
+					<p class="contacts-hero-message">" It's another day here at UCF Paradise Coffee. 
+						What contacts would you like to search? "</p>
+						
 					<p class="contacts-hero-role">Barista, Orlando</p>
 					<div class="contacts-hero-badges">
 						<span class="contacts-badge">Top Performer</span>
