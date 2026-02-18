@@ -2,98 +2,121 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Manage Contacts Desktop</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<link href="css/styles.css" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
-	<script type="text/javascript" src="js/code.js"></script>
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', function() 
-		{
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+	<title>COP4331 UCF Paradise Coffee Contact Manager</title>
+	<script src="js/code.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
 			readCookie();
-		}, false);
-		</script>
+			var el = document.getElementById('contactsWelcomeTitle');
+			if (el && typeof firstName !== 'undefined' && firstName) {
+				var name = firstName + (lastName ? ' ' + lastName : '');
+				el.textContent = 'Welcome back, ' + name + '!';
+			}
+		});
+	</script>
 </head>
-<body>
-	<div class="panel contacts-page">
-		<div class="topbar contacts-header">
-			<div class="row contacts-header-left">
-				<div class="logo-wrap"><img src="images/logoPng.png" alt="Partners" /></div>
-				<span class="contacts-brand">Partners</span>
-				<div class="form contacts-search-form">
-					<input type="text" id="searchText" placeholder="Search contacts..." />
+<body class="contacts-page-body">
+	<!-- Header -->
+	<header class="contacts-header-bar">
+		<div class="contacts-header-inner">
+			<div class="contacts-header-left">
+				<img alt="Starbucks Logo" class="contacts-logo-img" src="images/logoPng.png" />
+				<div class="contacts-welcome-text">
+					<h1 class="contacts-welcome-title" id="contactsWelcomeTitle">Welcome back!</h1>
 				</div>
 			</div>
-			<div id="loggedInDiv" class="row contacts-header-right">
-				<button type="button" class="btn btn-outline contacts-icon-btn" aria-label="Notifications"><span class="material-symbols-outlined">notifications</span></button>
-				<span id="userName" class="contacts-user-name"></span>
-				<button type="button" id="logoutButton" class="btn btn-outline" onclick="doLogout();">Log Out</button>
+			<div class="contacts-header-nav">
+				<button type="button" class="contacts-btn-link contacts-btn-about">About Us</button>
+				<button type="button" class="contacts-btn-link contacts-btn-logout" onclick="doLogout();">Logout</button>
 			</div>
 		</div>
-		<div class="content contacts-main">
-			<nav class="nav contacts-breadcrumb">
-				<a href="index.html">Home</a>
-				<span class="material-symbols-outlined contacts-chevron">chevron_right</span>
-				<span class="contacts-breadcrumb-current">Contacts</span>
-			</nav>
-			<div class="row contacts-title-row">
-				<div>
-					<h1 id="title" class="card contacts-page-title">Manage Contacts</h1>
-					<p class="subtitle contacts-page-subtitle">Oversee and organize all partner and customer relationships.</p>
+	</header>
+	<!-- Main Content Grid -->
+	<main class="contacts-main">
+		<!-- Left Side: Barista Profile (30%) -->
+		<aside class="contacts-aside">
+			<div class="contacts-hero-card">
+				<div class="contacts-hero-overlay"></div>
+				<div class="contacts-hero-bg" style="background-image: url('images/rickTakingOrder.jpg');"></div>
+				<div class="contacts-hero-caption">
+					<h3 class="contacts-hero-name">Dr. Richard Leinecker</h3>
+						<p class="contacts-hero-name-subtitle">"if he didnt lock in"</p>
+					<p class="contacts-hero-role">Barista, Orlando</p>
+					<div class="contacts-hero-badges">
+						<span class="contacts-badge">Top Performer</span>
+						<span class="contacts-badge">30 yrs experience</span>
+					</div>
 				</div>
-				<button type="button" id="addColorButton" class="btn btn-primary contacts-add-btn" onclick="addColor();">+ Add New Contact</button>
 			</div>
-			<div class="card contacts-card">
-				<div class="row contacts-toolbar">
-					<div class="row contacts-toolbar-left">
-						<span class="contacts-tab-label">ALL PARTNERS</span>
-						<span id="contactsCount" class="contacts-tab-badge">128 Total</span>
+		</aside>
+		<!-- Right Side: Contact Management (70%) -->
+		<section class="contacts-section">
+			<!-- Management Controls Card -->
+			<div class="contacts-card-box">
+				<div class="contacts-card-header">
+					<div>
+						<h2 class="contacts-card-title">Manage Connections</h2>
 					</div>
-					<div class="row contacts-toolbar-right">
-						<button type="button" class="btn btn-outline contacts-toolbar-btn">Filter</button>
-						<button type="button" class="btn btn-outline contacts-toolbar-btn">Export</button>
-					</div>
+					<button type="button" class="contacts-btn-add-contact">
+						<span class="material-symbols-outlined contacts-add-icon">add</span>
+						Add Contact
+					</button>
 				</div>
-				<div id="accessUIDiv" class="contacts-table-wrap">
-					<div class="row contacts-search-row">
-						<div class="form" style="flex:1; margin:0;">
-							<input type="text" id="colorText" placeholder="Contact to add" />
-						</div>
-						<button type="button" id="searchColorButton" class="btn btn-outline" onclick="searchColor();">Search Contact</button>
-					</div>
-					<span id="colorSearchResult" class="result"></span>
-					<table class="contacts-table">
+				<!-- Search Bar -->
+				<div class="contacts-search-wrap">
+					<span class="material-symbols-outlined contacts-search-icon">search</span>
+					<input class="contacts-search-input" placeholder="Search contacts by name or role..." type="text" />
+				</div>
+				<!-- Contact List Table -->
+				<div class="contacts-table-scroll">
+					<table class="contacts-table-new">
 						<thead>
-							<tr>
-								<th>CONTACT NAME</th>
-								<th>EMAIL ADDRESS</th>
-								<th>PHONE NUMBER</th>
-								<th>STATUS</th>
-								<th>ACTIONS</th>
+							<tr class="contacts-table-head-row">
+								<th class="contacts-table-th">first name</th>
+								<th class="contacts-table-th">last name</th>
+								<th class="contacts-table-th">Email</th>
+								<th class="contacts-table-th">phone</th>
+								<th class="contacts-table-th contacts-table-th-actions">Actions</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr><td colspan="5"><p id="colorList"></p></td></tr>
+						<tbody class="contacts-table-body" id="contactsTableBody">
+							<!-- Rows populated by script -->
 						</tbody>
 					</table>
-					<span id="colorAddResult" class="result"></span>
 				</div>
-				<div class="row contacts-pagination">
-					<span id="contactsPaginationText" class="contacts-pagination-label">Showing 1 to 4 of 128 entries</span>
-					<div class="row contacts-pagination-controls">
-						<button type="button" class="btn btn-outline contacts-page-btn" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
-						<button type="button" class="btn btn-primary contacts-page-num contacts-page-num-active">1</button>
-						<button type="button" class="btn btn-outline contacts-page-num">2</button>
-						<button type="button" class="btn btn-outline contacts-page-num">3</button>
-						<span class="contacts-page-dots">...</span>
-						<button type="button" class="btn btn-outline contacts-page-num">32</button>
-						<button type="button" class="btn btn-outline contacts-page-btn" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
+				<!-- Footer Stats -->
+				<div class="contacts-card-footer">
+					<p class="contacts-footer-text" id="contactsFooterText">Showing 0 partners</p>
+					<div class="contacts-pagination-btns">
+						<button type="button" class="contacts-btn-pagination" aria-label="Previous">
+							<span class="material-symbols-outlined">chevron_left</span>
+						</button>
+						<button type="button" class="contacts-btn-pagination" aria-label="Next">
+							<span class="material-symbols-outlined">chevron_right</span>
+						</button>
 					</div>
 				</div>
 			</div>
-			<p class="subtitle contacts-footer">© 2024 Partner Portal Desktop. All rights reserved.</p>
-		</div>
-	</div>
+		</section>
+	</main>
+	<!-- Bottom Navigation (Mobile Only) -->
+	<nav class="contacts-bottom-nav">
+		<a class="contacts-nav-link contacts-nav-link-active" href="#">
+			<span class="material-symbols-outlined">house</span>
+			<span class="contacts-nav-label">Home</span>
+		</a>
+		<a class="contacts-nav-link" href="#">
+			<span class="material-symbols-outlined">contacts</span>
+			<span class="contacts-nav-label">Contacts</span>
+		</a>
+		<a class="contacts-nav-link" href="#">
+			<span class="material-symbols-outlined">settings</span>
+			<span class="contacts-nav-label">Settings</span>
+		</a>
+	</nav>
 </body>
 </html>
