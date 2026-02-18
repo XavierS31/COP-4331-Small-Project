@@ -3,18 +3,30 @@
 <head>
 	<meta charset="utf-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<link href="css/styles.css" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/styles.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
 	<title>COP4331 UCF Paradise Coffee Contact Manager</title>
-	<script src="js/code.js"></script>
+	<script src="./js/code.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			readCookie();
+			//readCookie();
 			var el = document.getElementById('contactsWelcomeTitle');
 			if (el && typeof firstName !== 'undefined' && firstName) {
 				var name = firstName + (lastName ? ' ' + lastName : '');
 				el.textContent = 'Welcome back, ' + name + '!';
+			}
+			var heroBg = document.getElementById('contactsHeroBg');
+			var section = document.getElementById('contactsSection');
+			var defaultImg = "url('./images/rickTakingOrder.jpg')";
+			var hoverImg = "url('./images/ricktalking.jpg')";
+			if (heroBg && section) {
+				section.addEventListener('mouseenter', function() {
+					heroBg.style.backgroundImage = hoverImg;
+				});
+				section.addEventListener('mouseleave', function() {
+					heroBg.style.backgroundImage = defaultImg;
+				});
 			}
 		});
 	</script>
@@ -24,7 +36,7 @@
 	<header class="contacts-header-bar">
 		<div class="contacts-header-inner">
 			<div class="contacts-header-left">
-				<img alt="Starbucks Logo" class="contacts-logo-img" src="images/logoPng.png" />
+				<img alt="Starbucks Logo" class="contacts-logo-img" src="./images/logoPng.png" />
 				<div class="contacts-welcome-text">
 					<h1 class="contacts-welcome-title" id="contactsWelcomeTitle">Welcome back!</h1>
 				</div>
@@ -41,7 +53,7 @@
 		<aside class="contacts-aside">
 			<div class="contacts-hero-card">
 				<div class="contacts-hero-overlay"></div>
-				<div class="contacts-hero-bg" style="background-image: url('images/rickTakingOrder.jpg');"></div>
+				<div class="contacts-hero-bg" id="contactsHeroBg" style="background-image: url('./images/rickTakingOrder.jpg');"></div>
 				<div class="contacts-hero-caption">
 					<h3 class="contacts-hero-name">Dr. Richard Leinecker</h3>
 						<p class="contacts-hero-name-subtitle">"if he didnt lock in"</p>
@@ -54,7 +66,7 @@
 			</div>
 		</aside>
 		<!-- Right Side: Contact Management (70%) -->
-		<section class="contacts-section">
+		<section class="contacts-section" id="contactsSection">
 			<!-- Management Controls Card -->
 			<div class="contacts-card-box">
 				<div class="contacts-card-header">
