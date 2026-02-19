@@ -126,12 +126,18 @@ function deleteContact(contactId) {
 }
 
 // Function to search for contacts - uses GetContacts.php API endpoint
+// Loads contacts for the logged-in user; filters by search term (name, email, phone) when typing
 function searchContacts() {
 	let input = document.getElementById("contactsSearchInput");
 	if (!input) return;
 	let search = input.value.trim();
 
-	let tmp = { search: search, userId: userId };
+	let uid = (typeof userId !== "undefined" && userId > 0) ? userId : 0;
+	if (uid <= 0) {
+		renderContactsTable([]);
+		return;
+	}
+	let tmp = { search: search, userId: uid };
 	let jsonPayload = JSON.stringify(tmp);
 	let url = urlBase + "/GetContacts." + extension;
 

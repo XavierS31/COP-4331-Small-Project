@@ -11,8 +11,8 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND UserID = ? ORDER BY LastName, FirstName");
-		$stmt->bind_param("ssi", $searchPattern, $searchPattern, $userId);
+		$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ? AND (FirstName LIKE ? OR LastName LIKE ? OR Email LIKE ? OR Phone LIKE ?) ORDER BY LastName, FirstName");
+		$stmt->bind_param("issss", $userId, $searchPattern, $searchPattern, $searchPattern, $searchPattern);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
