@@ -1209,3 +1209,263 @@
 .contacts-nav-label {
   font-size: 10px;
 }
+
+/* Contact Modal */
+.contacts-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.contacts-modal-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.contacts-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.contacts-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+
+.contacts-modal-open .contacts-modal-content {
+  transform: scale(1);
+}
+
+.contacts-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contacts-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
+.contacts-modal-close {
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-400);
+}
+
+.contacts-modal-close:hover {
+  color: var(--text);
+}
+
+.contacts-modal-body label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.contacts-modal-body input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.contacts-form-result {
+  font-size: 14px;
+  color: var(--red-500);
+  margin: 0 0 8px;
+}
+
+.contacts-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.contacts-btn-secondary {
+  padding: 10px 20px;
+  background: var(--gray-100);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.contacts-btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.contacts-btn-primary-modal {
+  padding: 10px 20px;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+}
+
+.contacts-btn-primary-modal:hover {
+  background: #004d34;
+}
+
+/* Contact table animations */
+@keyframes contactsAnimPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; background-color: rgba(var(--primary-rgb), 0.08); }
+}
+
+@keyframes contactsRowEditFlash {
+  0%, 100% { background-color: transparent; }
+  30% { background-color: rgba(var(--primary-rgb), 0.15); }
+  60% { background-color: rgba(var(--primary-rgb), 0.08); }
+}
+
+@keyframes contactsRowDelete {
+  0% { opacity: 1; background-color: transparent; }
+  50% { background-color: rgba(239, 68, 68, 0.15); }
+  100% { opacity: 0; background-color: rgba(239, 68, 68, 0.1); }
+}
+
+@keyframes contactsRowAdd {
+  0% { opacity: 0; transform: translateY(-8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.contacts-anim-add .contacts-table-row {
+  animation: contactsRowAdd 0.35s ease-out forwards;
+}
+
+.contacts-anim-search {
+  animation: contactsAnimPulse 0.4s ease-out;
+}
+
+.contacts-row-edit-flash {
+  animation: contactsRowEditFlash 0.5s ease-out;
+}
+
+.contacts-row-delete {
+  animation: contactsRowDelete 0.35s ease-out forwards;
+}
+
+/* ========== About Us Page ========== */
+.about-main {
+  flex: 1;
+  padding: 32px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.about-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.about-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-size: 16px;
+  color: var(--gray-500);
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .about-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+.about-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-member-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.2) 0%, rgba(var(--primary-rgb), 0.08) 100%);
+  border: 3px solid rgba(var(--primary-rgb), 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-member:hover .about-member-circle {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.25);
+}
+
+.about-member-initials {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+.about-member-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.about-member-role {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.4;
+}

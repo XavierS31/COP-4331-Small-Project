@@ -18,17 +18,29 @@
 			}
 
 			var heroBg = document.getElementById('contactsHeroBg');
+			var heroMsg = document.getElementById('contactsHeroMessage');
 			var section = document.getElementById('contactsSection');
 			var defaultImg = "url('./images/rickTakingOrder.jpg')";
 			var hoverImg = "url('./images/rickTalking.jpg')";
+			var defaultMsg = '" It\'s another day here at UCF Paradise Coffee. What contacts would you like to do today? "';
+			var hoverMsg = '" You can search contacts, add contacts, edit and delete existing contacts. "';
 			if (heroBg && section) {
 				section.addEventListener('mouseenter', function() {
 					heroBg.style.backgroundImage = hoverImg;
+					if (heroMsg) heroMsg.textContent = hoverMsg;
 				});
 				section.addEventListener('mouseleave', function() {
 					heroBg.style.backgroundImage = defaultImg;
+					if (heroMsg) heroMsg.textContent = defaultMsg;
 				});
 			}
+
+			document.getElementById('contactsSearchInput').addEventListener('input', searchContacts);
+			document.getElementById('contactsSearchInput').addEventListener('keyup', function(e) { if (e.key === 'Enter') searchContacts(); });
+			document.addEventListener('keydown', function(e) {
+				if (e.key === 'Escape' && document.getElementById('contactModal').classList.contains('contacts-modal-open')) closeContactModal();
+			});
+			searchContacts();
 		});
 	</script>
 </head>
@@ -43,7 +55,7 @@
 				</div>
 			</div>
 			<div class="contacts-header-nav">
-				<button type="button" class="contacts-btn-link contacts-btn-about">About Us</button>
+				<a href="aboutUs.html" class="contacts-btn-link contacts-btn-about">About Us</a>
 				<button type="button" class="contacts-btn-link contacts-btn-logout" onclick="doLogout();">Logout</button>
 			</div>
 		</div>
@@ -57,8 +69,8 @@
 				<div class="contacts-hero-bg" id="contactsHeroBg" style="background-image: url('./images/rickTakingOrder.jpg');"></div>
 				<div class="contacts-hero-caption">
 					<h3 class="contacts-hero-name">Dr. Richard Leinecker</h3>
-					<p class="contacts-hero-message">" It's another day here at UCF Paradise Coffee. 
-						What contacts would you like to search? "</p>
+					<p class="contacts-hero-message" id="contactsHeroMessage">" It's another day here at UCF Paradise Coffee. 
+						What would you like to do today? "</p>
 						
 					<p class="contacts-hero-role">Barista, Orlando</p>
 					<div class="contacts-hero-badges">
@@ -76,7 +88,7 @@
 					<div>
 						<h2 class="contacts-card-title">Manage Contacts</h2>
 					</div>
-					<button type="button" class="contacts-btn-add-contact">
+					<button type="button" class="contacts-btn-add-contact" onclick="openAddContactModal();">
 						<span class="material-symbols-outlined contacts-add-icon">add</span>
 						Add Contact
 					</button>
@@ -84,7 +96,7 @@
 				<!-- Search Bar -->
 				<div class="contacts-search-wrap">
 					<span class="material-symbols-outlined contacts-search-icon">search</span>
-					<input class="contacts-search-input" placeholder="Search contacts by name or role..." type="text" />
+					<input id="contactsSearchInput" class="contacts-search-input" placeholder="Search contacts by name or role..." type="text" />
 				</div>
 				<!-- Contact List Table -->
 				<div class="contacts-table-scroll">
@@ -118,6 +130,34 @@
 			</div>
 		</section>
 	</main>
+	<!-- Add/Edit Contact Modal -->
+	<div id="contactModal" class="contacts-modal" data-mode="add" data-contact-id="">
+		<div class="contacts-modal-backdrop" onclick="closeContactModal();"></div>
+		<div class="contacts-modal-content">
+			<div class="contacts-modal-header">
+				<h3 id="contactModalTitle" class="contacts-modal-title">Add Contact</h3>
+				<button type="button" class="contacts-modal-close" aria-label="Close" onclick="closeContactModal();">
+					<span class="material-symbols-outlined">close</span>
+				</button>
+			</div>
+			<div class="contacts-modal-body">
+				<label for="contactFirstName">First name</label>
+				<input id="contactFirstName" type="text" placeholder="John" onkeydown="if(event.key==='Enter')submitContactForm();" />
+				<label for="contactLastName">Last name</label>
+				<input id="contactLastName" type="text" placeholder="Doe" onkeydown="if(event.key==='Enter')submitContactForm();" />
+				<label for="contactPhone">Phone</label>
+				<input id="contactPhone" type="tel" placeholder="555-123-4567" onkeydown="if(event.key==='Enter')submitContactForm();" />
+				<label for="contactEmail">Email</label>
+				<input id="contactEmail" type="email" placeholder="john@example.com" onkeydown="if(event.key==='Enter')submitContactForm();" />
+				<p id="contactFormResult" class="contacts-form-result"></p>
+			</div>
+			<div class="contacts-modal-footer">
+				<button type="button" class="contacts-btn-secondary" onclick="closeContactModal();">Cancel</button>
+				<button type="button" class="contacts-btn-primary-modal" onclick="submitContactForm();">Save</button>
+			</div>
+		</div>
+	</div>
+
 	<!-- Bottom Navigation (Mobile Only) -->
 	<nav class="contacts-bottom-nav">
 		<a class="contacts-nav-link contacts-nav-link-active" href="#">
