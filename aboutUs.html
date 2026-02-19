@@ -15,10 +15,7 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			readCookie();
 			var el = document.getElementById('contactsWelcomeTitle');
-			if (el && typeof firstName !== 'undefined' && firstName) {
-				var name = firstName + (lastName ? ' ' + lastName : '');
-				el.textContent = 'Welcome back, ' + name + '!';
-			}
+		
 		});
 	</script>
 </head>
