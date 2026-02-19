@@ -202,6 +202,35 @@ function closeSignUpModal() {
     document.getElementById("signUpModal").style.display = "none";
 }
 
+// ========== Contact Validation ==========
+function isValidEmail(email) {
+	if (!email || email.trim() === "") return true;
+	const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return re.test(email.trim());
+}
+
+function isValidPhone(phone) {
+	if (!phone || phone.trim() === "") return true;
+	return /^\d{3}-\d{3}-\d{4}$/.test(phone.trim());
+}
+
+function validateContactForm(msgEl) {
+	let phone = document.getElementById("contactPhone").value.trim();
+	let email = document.getElementById("contactEmail").value.trim();
+	let errors = [];
+	if (phone && !isValidPhone(phone)) {
+		errors.push("* Invalid phone number. Format must be 000-000-0000");
+	}
+	if (email && !isValidEmail(email)) {
+		errors.push("* Invalid email format.");
+	}
+	if (errors.length > 0 && msgEl) {
+		msgEl.innerHTML = errors.join("<br>");
+		return false;
+	}
+	return true;
+}
+
 // ========== Contact CRUD ==========
 function addContact() {
 	let firstName = document.getElementById("contactFirstName").value.trim();
@@ -216,6 +245,8 @@ function addContact() {
 		if (msgEl) msgEl.innerHTML = "First and last name are required.";
 		return;
 	}
+
+	if (!validateContactForm(msgEl)) return;
 
 	let tmp = { firstName, lastName, phone, email, userId };
 	let jsonPayload = JSON.stringify(tmp);
@@ -252,6 +283,8 @@ function editContact(contactId) {
 		if (msgEl) msgEl.innerHTML = "First and last name are required.";
 		return;
 	}
+
+	if (!validateContactForm(msgEl)) return;
 
 	let tmp = { firstName, lastName, phoneNumber: phone, email, contactId: parseInt(contactId, 10) };
 	let jsonPayload = JSON.stringify(tmp);

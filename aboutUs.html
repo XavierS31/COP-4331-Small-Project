@@ -8,9 +8,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
 	<title>About Us – UCF Paradise Coffee</title>
 	<script src="./js/code.js"></script>
+	<script src="./js/sign.js"></script>
+	<script src="./js/contacts.js"></script>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-			//readCookie();
+			readCookie();
 			var el = document.getElementById('contactsWelcomeTitle');
 			if (el && typeof firstName !== 'undefined' && firstName) {
 				var name = firstName + (lastName ? ' ' + lastName : '');
@@ -26,7 +29,7 @@
 			<div class="contacts-header-left">
 				<img alt="Starbucks Logo" class="contacts-logo-img" src="./images/logoPng.png" />
 				<div class="contacts-welcome-text">
-					<h1 class="contacts-welcome-title" id="contactsWelcomeTitle">Welcome back!</h1>
+					<h1 class="contacts-welcome-title" id="contactsWelcomeTitle">About Us</h1>
 				</div>
 			</div>
 			<div class="contacts-header-nav">
@@ -47,7 +50,7 @@
 						<span class="about-member-initials">XS</span>
 					</div>
 					<h3 class="about-member-name">Xavier Soto</h3>
-					<p class="about-member-role">Product Manager and Frontend</p>
+					<p class="about-member-role">Product Manager and Frontend Developer</p>
 				</div>
 				<div class="about-member">
 					<div class="about-member-circle">
@@ -74,27 +77,13 @@
 					<div class="about-member-circle">
 						<span class="about-member-initials">PB</span>
 					</div>
-					<h3 class="about-member-name">Patricl Baldwin</h3>
+					<h3 class="about-member-name">Patrick Baldwin</h3>
 					<p class="about-member-role">API Developer</p>
 				</div>
 			</div>
 		</div>
 	</main>
 
-	<!-- Bottom Navigation (Mobile Only) -->
-	<nav class="contacts-bottom-nav">
-		<a class="contacts-nav-link" href="index.html">
-			<span class="material-symbols-outlined">house</span>
-			<span class="contacts-nav-label">Home</span>
-		</a>
-		<a class="contacts-nav-link" href="contacts.html">
-			<span class="material-symbols-outlined">contacts</span>
-			<span class="contacts-nav-label">Contacts</span>
-		</a>
-		<a class="contacts-nav-link contacts-nav-link-active" href="aboutUs.html">
-			<span class="material-symbols-outlined">info</span>
-			<span class="contacts-nav-label">About</span>
-		</a>
-	</nav>
+	
 </body>
 </html>
