@@ -182,7 +182,7 @@ function renderContactsTable(contacts) {
 		tbody.appendChild(tr);
 	}
 
-	if (footerText) footerText.textContent = "Showing " + contacts.length + " partners";
+	if (footerText) footerText.textContent = "Showing " + contacts.length + " contacts";
 }
 
 // Function to escape HTML
