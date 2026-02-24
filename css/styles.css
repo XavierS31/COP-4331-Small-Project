@@ -829,7 +829,7 @@
   font-size: 12px;
 }
 
-/* Section (right 70%) */
+/* Section (right 70%) – matches aside height on desktop */
 .contacts-section {
   width: 100%;
   display: flex;
@@ -840,10 +840,11 @@
 @media (min-width: 768px) {
   .contacts-section {
     width: 72%;
+    align-self: stretch;
   }
 }
 
-/* Card box */
+/* Card box – stretches to match aside on desktop */
 .contacts-card-box {
   background: #fff;
   border-radius: 0.75rem;
@@ -853,6 +854,13 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .contacts-card-box {
+    flex: 1;
+    min-height: 0;
+  }
 }
 
 .contacts-card-header {
@@ -933,9 +941,19 @@
   box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.3);
 }
 
-/* Table */
+/* Table – cap 7 visible rows, always show scrollbar; fills height on desktop */
 .contacts-table-scroll {
   overflow-x: auto;
+  overflow-y: scroll;
+  max-height: 380px; /* header ~44px + 7 rows ~48px each */
+}
+
+@media (min-width: 768px) {
+  .contacts-table-scroll {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+  }
 }
 
 .contacts-table-new {
@@ -1084,6 +1102,15 @@
 .contacts-btn-pagination:hover {
   background: rgba(var(--primary-rgb), 0.05);
   transition: background-color 0.2s;
+}
+
+.contacts-btn-pagination:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contacts-btn-pagination:disabled:hover {
+  background: #fff;
 }
 
 .contacts-btn-pagination .material-symbols-outlined {

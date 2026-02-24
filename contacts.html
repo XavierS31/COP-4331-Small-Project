@@ -42,6 +42,8 @@
 			document.addEventListener('keydown', function(e) {
 				if (e.key === 'Escape' && document.getElementById('contactModal').classList.contains('contacts-modal-open')) closeContactModal();
 			});
+			document.getElementById('contactsPrevBtn').addEventListener('click', goToPrevPage);
+			document.getElementById('contactsNextBtn').addEventListener('click', goToNextPage);
 			searchContacts();
 		});
 	</script>
@@ -119,12 +121,12 @@
 				</div>
 				<!-- Footer Stats -->
 				<div class="contacts-card-footer">
-					<p class="contacts-footer-text" id="contactsFooterText">Showing 0 partners</p>
+					<p class="contacts-footer-text" id="contactsFooterText">Showing 0 out of 0 contacts</p>
 					<div class="contacts-pagination-btns">
-						<button type="button" class="contacts-btn-pagination" aria-label="Previous">
+						<button type="button" id="contactsPrevBtn" class="contacts-btn-pagination" aria-label="Previous">
 							<span class="material-symbols-outlined">chevron_left</span>
 						</button>
-						<button type="button" class="contacts-btn-pagination" aria-label="Next">
+						<button type="button" id="contactsNextBtn" class="contacts-btn-pagination" aria-label="Next">
 							<span class="material-symbols-outlined">chevron_right</span>
 						</button>
 					</div>

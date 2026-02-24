@@ -14,7 +14,7 @@ function validateContactForm(msgEl) {
 	let email = document.getElementById("contactEmail").value.trim();
 	let errors = [];
 	if (phone && !isValidPhone(phone)) {
-		errors.push("* Invalid phone number. Format must be 000-000-0000");
+		errors.push("* Invalid phone number. Must be xxx-xxx-xxxx");
 	}
 	if (email && !isValidEmail(email)) {
 		errors.push("* Invalid email format.");
@@ -122,6 +122,42 @@ function deleteContact(contactId) {
 	xhr.send(jsonPayload);
 }
 
+// Pagination state
+var allContacts = [];
+var currentPage = 0;
+var CONTACTS_PER_PAGE = 7;
+
+function goToPrevPage() {
+	if (currentPage > 0) {
+		currentPage--;
+		renderCurrentPage();
+	}
+}
+
+function goToNextPage() {
+	var totalPages = Math.ceil(allContacts.length / CONTACTS_PER_PAGE);
+	if (currentPage < totalPages - 1) {
+		currentPage++;
+		renderCurrentPage();
+	}
+}
+
+function renderCurrentPage() {
+	var start = currentPage * CONTACTS_PER_PAGE;
+	var pageContacts = allContacts.slice(start, start + CONTACTS_PER_PAGE);
+	renderContactsTable(pageContacts, allContacts.length);
+	updatePaginationButtons();
+	triggerContactAnimation("search");
+}
+
+function updatePaginationButtons() {
+	var prevBtn = document.getElementById("contactsPrevBtn");
+	var nextBtn = document.getElementById("contactsNextBtn");
+	var totalPages = Math.ceil(allContacts.length / CONTACTS_PER_PAGE);
+	if (prevBtn) prevBtn.disabled = currentPage <= 0;
+	if (nextBtn) nextBtn.disabled = currentPage >= totalPages - 1 || totalPages === 0;
+}
+
 // Function to search for contacts - uses GetContacts.php API endpoint
 // Loads contacts for the logged-in user; filters by search term (name, email, phone) when typing
 function searchContacts() {
@@ -131,7 +167,10 @@ function searchContacts() {
 
 	let uid = (typeof userId !== "undefined" && userId > 0) ? userId : 0;
 	if (uid <= 0) {
-		renderContactsTable([]);
+		allContacts = [];
+		currentPage = 0;
+		renderContactsTable([], 0);
+		updatePaginationButtons();
 		return;
 	}
 	let tmp = { search: search, userId: uid };
@@ -145,22 +184,24 @@ function searchContacts() {
 		if (this.readyState === 4 && this.status === 200) {
 			let jsonObject = JSON.parse(xhr.responseText);
 			if (jsonObject.error && jsonObject.error.length > 0) return;
-			renderContactsTable(jsonObject.results || []);
-			triggerContactAnimation("search");
+			allContacts = jsonObject.results || [];
+			currentPage = 0;
+			renderCurrentPage();
 		}
 	};
 	xhr.send(jsonPayload);
 }
 
-// Function to render the contacts table
-function renderContactsTable(contacts) {
+// Function to render the contacts table (pageContacts = slice for current page, totalCount = all contacts)
+function renderContactsTable(pageContacts, totalCount) {
 	let tbody = document.getElementById("contactsTableBody");
 	let footerText = document.getElementById("contactsFooterText");
 	if (!tbody) return;
+	if (totalCount === undefined) totalCount = pageContacts.length;
 
 	tbody.innerHTML = "";
-	for (let i = 0; i < contacts.length; i++) {
-		let c = contacts[i];
+	for (let i = 0; i < pageContacts.length; i++) {
+		let c = pageContacts[i];
 		let tr = document.createElement("tr");
 		tr.className = "contacts-table-row";
 		tr.setAttribute("data-contact-id", c.id);
@@ -179,7 +220,11 @@ function renderContactsTable(contacts) {
 		tbody.appendChild(tr);
 	}
 
-	if (footerText) footerText.textContent = "Showing " + contacts.length + " contacts";
+	// Footer: "Showing 1-7 out of 15 contacts" or "Showing 8-15 out of 15 contacts"
+	var start = currentPage * CONTACTS_PER_PAGE;
+	var end = Math.min(start + pageContacts.length, start + CONTACTS_PER_PAGE);
+	var rangeStr = totalCount === 0 ? "0" : (start + 1) + "-" + (start + pageContacts.length);
+	if (footerText) footerText.textContent = "Showing " + rangeStr + " out of " + totalCount + " contacts";
 }
 
 // Function to escape HTML
