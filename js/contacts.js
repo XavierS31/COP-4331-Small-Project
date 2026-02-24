@@ -1,4 +1,4 @@
-// Uses urlBase, extension, userId from sign.js / code.js
+// Uses urlBase, extension, userId from code.js
 
 // Contact Validation 
 function isValidEmail(email) {
