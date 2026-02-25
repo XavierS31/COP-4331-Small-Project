@@ -294,12 +294,14 @@
     align-items:center;
     gap: 14px;
     margin: 20px 0 16px;
+    color: black;
   }
   
   .divider span{
     flex:1;
     height: 1px;
-    background: rgba(30,57,50,.25);
+    background: black;
+    color: black;
   }
   
   .divider em{
@@ -307,7 +309,7 @@
     font-weight: 900;
     font-size: 11px;
     letter-spacing: .22em;
-    color: rgba(30,57,50,.45);
+    color: black;
   }
   
   /* Login result */
