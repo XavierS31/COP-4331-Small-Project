@@ -52,6 +52,7 @@ This project was a collaborative effort by **Group 11 UCF Paradise Coffee Shop**
 
 ## 🚀 Deployment & Installation
 The application is configured to run on a Linux environment managed via Apache. The Application is hosted and running on the link provided in the repo description.
+Link to visit application: cop4331-11-domain.xyz/index.html
 
 1. **Clone the repository:**
    ```bash
